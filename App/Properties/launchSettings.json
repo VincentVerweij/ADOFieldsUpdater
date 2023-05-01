@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "App": {
+      "commandName": "Project",
+      "commandLineArgs": "--clockify-workspace-name \"Vincent Verweij's test workspace\" --clockify-api-key NTBiNTE1YWItZGZkNS00YThlLTg3N2MtZTdjODc4MjhhMjRl --entity-pat cloudfuelbe:mbwmrbpiedrrrwnzrhsypejtufxvz7lfev4gkodvledr4kmo4e6q --entity-pat quaxconsulting:ywhibbw3o76vqcnj35gaxudupo6yosxzc6ibiupecuz4x73dawga"
+      //"commandLineArgs": "--clockify-workspace-name \"Vincent Verweij's test workspace\" --clockify-api-key NTBiNTE1YWItZGZkNS00YThlLTg3N2MtZTdjODc4MjhhMjRl --entity-pat quaxconsulting:ywhibbw3o76vqcnj35gaxudupo6yosxzc6ibiupecuz4x73dawga"
+    }
+  }
+}
