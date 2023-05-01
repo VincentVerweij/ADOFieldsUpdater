@@ -1,0 +1,29 @@
+{
+  "LABEL": {
+    "name": "Pull request title needs formatting",
+    "color": "EEEEEE"
+  },
+  "CHECKS": {
+    "prefixes": [
+      "fix!: ",
+      "fix: ",
+      "feat!: ",
+      "feat: ",
+      "refactor!: ",
+      "refactor: ",
+      "chore: ",
+      "docs: ",
+      "ci: ",
+      "build: ",
+      "style: ",
+      "test: ",
+      "perf: ",
+      "revert: "
+    ]
+  },
+  "MESSAGES": {
+    "success": "All OK",
+    "failure": "PR title does not contain a valid conventional commit prefix",
+    "notice": ""
+  }
+}
