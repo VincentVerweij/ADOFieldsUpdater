@@ -21,13 +21,20 @@ var bindingEntityPersonalAccessTokensOption = new Option<string[]>(
 bindingEntityPersonalAccessTokensOption.IsRequired = true;
 bindingEntityPersonalAccessTokensOption.AddAlias("-p");
 
+var daysAgoOption = new Option<int>(
+    name: "--days-ago",
+    description: "How many days back should Clockify time entries be fetched.");
+daysAgoOption.AddAlias("-d");
+daysAgoOption.SetDefaultValue(1);
+
 var rootCommand = new RootCommand("App that pushes completed time from Clockify into a platform");
 rootCommand.AddGlobalOption(clockifyWorkspaceOption);
 rootCommand.AddGlobalOption(clockifyApiKeyOption);
 rootCommand.AddGlobalOption(bindingEntityPersonalAccessTokensOption);
+rootCommand.AddGlobalOption(daysAgoOption);
 
 rootCommand.SetHandler(
-    async (workspaceName, clockifyApiKey, patMappings) =>
+    async (workspaceName, clockifyApiKey, patMappings, daysAgo) =>
     {
         ILogger logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
@@ -45,7 +52,7 @@ rootCommand.SetHandler(
         }
 
         ITimeTracker clockifyTimeTracker = new ClockifyTimeTracker(workspaceName, clockifyApiKey, logger);
-        var timeEntities = await clockifyTimeTracker.GetTimeTrackingEntityAsync();
+        var timeEntities = await clockifyTimeTracker.GetTimeTrackingEntityAsync(-daysAgo);
 
         foreach (var timeEntry in timeEntities)
         {
@@ -77,6 +84,7 @@ rootCommand.SetHandler(
     }, 
     clockifyWorkspaceOption, 
     clockifyApiKeyOption, 
-    bindingEntityPersonalAccessTokensOption);
+    bindingEntityPersonalAccessTokensOption,
+    daysAgoOption);
 
 await rootCommand.InvokeAsync(args);
