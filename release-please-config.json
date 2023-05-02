@@ -3,7 +3,7 @@
   "release-type": "simple",
   "packages": {
     ".": {
-      "component": "Google.Cloud.EntityFrameworkCore.Spanner",
+      "component": "App",
       "extra-files": [
         {
           "type": "xml",
