@@ -46,21 +46,38 @@ namespace App
 
         private async Task<List<TimeEntryDtoImpl>> GetTimeEntriesForWorkspaceAndUserAsync(string workspaceId, string userId, int daysAgo = -1)
         {
+            List<TimeEntryDtoImpl> fetchedEntries = new();
+
             _logger.Information("Fetching Clockify's time entries for workspace ID {@workspaceId}, user ID {@userId} and days ago set to {@daysAgo}",
                 workspaceId, userId, daysAgo);
 
-            var timeEntriesResponse = await _clockifyClient.FindAllTimeEntriesForUserAsync(workspaceId, userId,
-                start: DateTimeOffset.Now.AddDays(daysAgo),
-                end: DateTimeOffset.Now);
+            var pageSize = 50;
+            var pageIndex = 1;
+            int fetchedItems = -1;
 
-            if (!timeEntriesResponse.IsSuccessful)
+            do
             {
-                return new List<TimeEntryDtoImpl>();
-            }
+                _logger.Information("Fetching page {@page} with page size of {@pageItems}", pageIndex, pageSize);
+                var timeEntriesResponse = await _clockifyClient.FindAllTimeEntriesForUserAsync(workspaceId, userId,
+                    start: DateTimeOffset.Now.AddDays(daysAgo),
+                    end: DateTimeOffset.Now,
+                    page: pageIndex,
+                    pageSize: pageSize);
 
-            _logger.Information("Fetched {@amountOfTimeEntries} time entries.", timeEntriesResponse?.Data?.Count);
+                fetchedItems = (int)(timeEntriesResponse?.Data?.Count);
 
-            return timeEntriesResponse.Data;
+                if (timeEntriesResponse.IsSuccessful)
+                {
+                    fetchedEntries.AddRange(timeEntriesResponse?.Data);
+                    _logger.Information("Fetched {@pageItems} from page {@page}", timeEntriesResponse?.Data?.Count, pageIndex);
+                }
+
+                pageIndex++;
+            } while (fetchedItems == -1 || fetchedItems == 50);
+
+            _logger.Information("Fetched all time entries from Clockify");
+
+            return fetchedEntries;
         }
 
         public string WorkspaceName { get; init; }
