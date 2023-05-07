@@ -5,24 +5,24 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.0.1</Version>
-    <PackageVersion>0.0.1</PackageVersion>
+    <Version>0.2.0</Version>
+    <PackageVersion>0.2.0</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="C:\Users\Vincent\.nuget\packages\clockify.net\2.3.0\contentFiles\any\netstandard2.0\CHANGELOG.md" />
+    <Content Remove="C:\Users\Vincent\.nuget\packages\clockify.net\2.3.0\contentFiles\any\netstandard2.0\CHANGELOG.md"/>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Clockify.Net" Version="2.3.0" />
-    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
-    <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.205.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="16.205.1" />
-    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
-    <PackageReference Include="Serilog.Extensions.Hosting" Version="5.1.0-dev-00123" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version="4.0.0-dev-00499" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.1-dev-00910" />
-    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="Clockify.Net" Version="2.3.0"/>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9"/>
+    <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.205.1"/>
+    <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="16.205.1"/>
+    <PackageReference Include="Serilog.Exceptions" Version="8.4.0"/>
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="5.1.0-dev-00123"/>
+    <PackageReference Include="Serilog.Settings.Configuration" Version="4.0.0-dev-00499"/>
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.1-dev-00910"/>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
   </ItemGroup>
 
 </Project>
