@@ -37,6 +37,9 @@ jobs:
       - name: Publish
         if: ${{ steps.releaseplease.outputs.release_created }}
         run: dotnet publish App/App.csproj --configuration Release --output release-artifacts
+      - name: Zip artifacts
+        if: ${{ steps.releaseplease.outputs.release_created }}
+        run: zip -r "ADOFieldsUpdater-${{ steps.releaseplease.outputs.tag_name }}.zip" "release-artifacts"
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         if: ${{ steps.releaseplease.outputs.release_created }}
@@ -44,6 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.releaseplease.outputs.upload_url }}
-          asset_path: ./release-artifacts/
-          asset_name: release-artifacts
+          asset_path: "ADOFieldsUpdater-${{ steps.releaseplease.outputs.tag_name }}.zip"
+          asset_name: "ADOFieldsUpdater-${{ steps.releaseplease.outputs.tag_name }}.zip"
           asset_content_type: application/octet-stream
