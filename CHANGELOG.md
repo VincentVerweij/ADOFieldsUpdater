@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/VincentVerweij/ADOFieldsUpdater/compare/v0.1.1...v0.1.2) (2023-05-07)
+
+
+### Bug Fixes
+
+* Exclude running timers ([#11](https://github.com/VincentVerweij/ADOFieldsUpdater/issues/11)) ([3a122e2](https://github.com/VincentVerweij/ADOFieldsUpdater/commit/3a122e23770b6492740ee6dd120e3aa076da4197))
+
 ## [0.1.1](https://github.com/VincentVerweij/ADOFieldsUpdater/compare/v0.1.0...v0.1.1) (2023-05-02)
 
 
