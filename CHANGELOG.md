@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/VincentVerweij/ADOFieldsUpdater/compare/v0.1.3...v0.1.4) (2023-05-07)
+
+
+### Bug Fixes
+
+* Adding release-please manifest file ([#15](https://github.com/VincentVerweij/ADOFieldsUpdater/issues/15)) ([02eb833](https://github.com/VincentVerweij/ADOFieldsUpdater/commit/02eb833f1fdee848b5d7dcd46b7bf42d82328957))
+
 ## [0.1.3](https://github.com/VincentVerweij/ADOFieldsUpdater/compare/v0.1.2...v0.1.3) (2023-05-07)
 
 
