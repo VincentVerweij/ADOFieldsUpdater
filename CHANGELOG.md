@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/VincentVerweij/ADOFieldsUpdater/compare/v0.1.2...v0.1.3) (2023-05-07)
+
+
+### Bug Fixes
+
+* workflow EISDIR error ([#13](https://github.com/VincentVerweij/ADOFieldsUpdater/issues/13)) ([b2facab](https://github.com/VincentVerweij/ADOFieldsUpdater/commit/b2facab4fa98012247c506cd4ebd52cd6c462cfd))
+
 ## [0.1.2](https://github.com/VincentVerweij/ADOFieldsUpdater/compare/v0.1.1...v0.1.2) (2023-05-07)
 
 
