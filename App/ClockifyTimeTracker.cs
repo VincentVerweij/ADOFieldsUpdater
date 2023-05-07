@@ -62,7 +62,8 @@ namespace App
                     start: DateTimeOffset.Now.AddDays(daysAgo),
                     end: DateTimeOffset.Now,
                     page: pageIndex,
-                    pageSize: pageSize);
+                    pageSize: pageSize,
+                    inProgress: false);
 
                 fetchedItems = (int)(timeEntriesResponse?.Data?.Count);
 
