@@ -35,9 +35,11 @@ jobs:
           release-type: simple
           package-name: ado-fields-updater
       - name: Publish
+        if: ${{ steps.releaseplease.outputs.release_created }}
         run: dotnet publish App/App.csproj --configuration Release --output release-artifacts
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
+        if: ${{ steps.releaseplease.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
