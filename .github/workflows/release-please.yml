@@ -15,9 +15,33 @@ jobs:
     name: Release Please
     runs-on: ubuntu-latest
     steps:
-      - name: Release
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "v7.0.x"
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Release please
         uses: google-github-actions/release-please-action@v3
+        id: releaseplease
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: simple
-          package-name: poc-release-please-demo
+          package-name: ado-fields-updater
+      - name: Publish
+        run: dotnet publish App/App.csproj --configuration Release --output release-artifacts
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.releaseplease.outputs.upload_url }}
+          asset_path: ./release-artifacts/
+          asset_name: release-artifacts
+          asset_content_type: application/octet-stream
